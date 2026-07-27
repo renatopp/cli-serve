@@ -4,7 +4,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/renatopp/go-serve/serve"
+	"github.com/renatopp/cli-serve/serve"
 	"github.com/renatopp/go-x/httpx/fetch"
 	"github.com/renatopp/go-x/testx"
 )
