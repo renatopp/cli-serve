@@ -20,7 +20,7 @@ type MockServerOptions struct {
 
 func (o MockServerOptions) orDefault() MockServerOptions {
 	if o.Address == "" {
-		o.Address = ":8080"
+		o.Address = "127.0.0.1:8080"
 	}
 	if o.Status == 0 {
 		o.Status = http.StatusOK

@@ -18,7 +18,7 @@ type ProxyServerOptions struct {
 
 func (o ProxyServerOptions) orDefault() ProxyServerOptions {
 	if o.Address == "" {
-		o.Address = ":8080"
+		o.Address = "127.0.0.1:8080"
 	}
 	if o.Logger == nil {
 		o.Logger = NewDefaultLogger()

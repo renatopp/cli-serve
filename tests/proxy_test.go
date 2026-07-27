@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/renatopp/go-serve/serve"
-	"github.com/renatopp/x/testx"
+	"github.com/renatopp/go-x/testx"
 )
 
 type proxiedRequest struct {

@@ -18,7 +18,7 @@ type StaticServerOptions struct {
 
 func (o StaticServerOptions) orDefault() StaticServerOptions {
 	if o.Address == "" {
-		o.Address = ":8080"
+		o.Address = "127.0.0.1:8080"
 	}
 	if o.Directory == "" {
 		o.Directory = "."

@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/renatopp/go-serve/serve"
-	"github.com/renatopp/x/httpx"
-	"github.com/renatopp/x/testx"
+	"github.com/renatopp/go-x/httpx/fetch"
+	"github.com/renatopp/go-x/testx"
 )
 
 func TestStaticModeCLI(t *testing.T) {
@@ -24,15 +24,15 @@ func TestStaticModeCLI(t *testing.T) {
 		baseURL, closeServer := serveOnRandomPort(t, server)
 		defer closeServer()
 
-		res := httpx.Fetch("GET", baseURL+"/sample/index.html")
+		res := fetch.Get(baseURL + "/sample/index.html")
 		testx.Equal(t, 200, res.StatusCode)
 		testx.Equal(t, "index mock\n", res.Text())
 
-		res2 := httpx.Fetch("GET", baseURL+"/sample/sample.md")
+		res2 := fetch.Get(baseURL + "/sample/sample.md")
 		testx.Equal(t, 200, res2.StatusCode)
 		testx.Equal(t, "sample md\n", res2.Text())
 
-		res3 := httpx.Fetch("GET", baseURL+"/sample/asdf")
+		res3 := fetch.Get(baseURL + "/sample/asdf")
 		testx.Equal(t, 404, res3.StatusCode)
 	})
 
@@ -49,11 +49,11 @@ func TestStaticModeCLI(t *testing.T) {
 		baseURL, closeServer := serveOnRandomPort(t, server)
 		defer closeServer()
 
-		res := httpx.Fetch("GET", baseURL+"/sample/asdf")
+		res := fetch.Get(baseURL + "/sample/asdf")
 		testx.Equal(t, 200, res.StatusCode)
 		testx.Equal(t, "index mock\n", res.Text())
 
-		res2 := httpx.Fetch("GET", baseURL+"/sample/sample.md")
+		res2 := fetch.Get(baseURL + "/sample/sample.md")
 		testx.Equal(t, 200, res2.StatusCode)
 		testx.Equal(t, "sample md\n", res2.Text())
 	})
@@ -71,7 +71,7 @@ func TestStaticModeCLI(t *testing.T) {
 		baseURL, closeServer := serveOnRandomPort(t, server)
 		defer closeServer()
 
-		res := httpx.Fetch("GET", baseURL+"/sample/")
+		res := fetch.Get(baseURL + "/sample/")
 		testx.Equal(t, 200, res.StatusCode)
 		testx.Equal(t, "index mock\n", res.Text())
 		testx.Equal(t, "*", res.Header("Access-Control-Allow-Origin"))

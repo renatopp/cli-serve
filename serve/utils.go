@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/renatopp/x/fmtx"
-	"github.com/renatopp/x/strx"
+	"github.com/renatopp/go-x/fmtx"
+	"github.com/renatopp/go-x/strx"
 )
 
 func NewDefaultLogger() *log.Logger {

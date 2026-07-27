@@ -7,14 +7,18 @@ import (
 
 	"github.com/renatopp/go-cli"
 	"github.com/renatopp/go-serve/serve"
-	"github.com/renatopp/x/fmtx"
+	"github.com/renatopp/go-x/fmtx"
 )
 
 var logger = serve.NewDefaultLogger()
 
-const cliDescription = `Web servers for testing and convenience.
-Provides static file serving, mock servers, echo servers, and reverse proxy.
-More information: http://github.com/renatopp/go-serve
+const cliDescription = `
+Convenient web servers for testing and development.
+
+This tool provides static file serving, mock servers, echo servers, and reverse
+proxy servers.
+
+More information, issues and contributions: http://github.com/renatopp/cli-serve
 `
 
 func main() {
@@ -26,14 +30,14 @@ func main() {
 	cli.Command("echo", "Serve an echo server.", cmdEcho)
 	cli.Command("proxy", "Serve a reverse proxy.", cmdProxy)
 	cli.Parse()
-	cli.ShowHelp()
+	cli.Help()
 }
 
 func cmdStatic() {
 	cli.Name("static")
 	cli.Description("Serve static files from a directory.")
 	directory := cli.Pos("directory", "Directory to serve").WithDefault(".")
-	address := cli.Pos("address", "Address to listen on").WithDefault(":8080")
+	address := cli.Pos("address", "Address to listen on").WithDefault("127.0.0.1:8080")
 	prefix := cli.Flag("prefix", "p", "URL prefix to serve under").WithDefault("/")
 	spa := cli.FlagBool("spa", "s", "Enable fallback for SPAs, serving index.html for 404").WithDefault(false)
 	cors := cli.FlagBool("cors", "c", "Enable CORS").WithDefault(false)
@@ -57,7 +61,7 @@ func cmdStatic() {
 func cmdMock() {
 	cli.Name("mock")
 	cli.Description("Serve a mock server which can return specified status code, headers and body.")
-	address := cli.Pos("address", "Address to listen on").WithDefault(":8080")
+	address := cli.Pos("address", "Address to listen on").WithDefault("127.0.0.1:8080")
 	status := cli.FlagInt("status", "s", "Response status code").WithDefault(http.StatusOK)
 	body := cli.Flag("body", "b", "Response body").WithDefault("")
 	delay := cli.FlagDuration("delay", "d", "Response delay, use duration format (e.g. 5s, 1m)").WithDefault(0)
@@ -95,7 +99,7 @@ func cmdMock() {
 func cmdEcho() {
 	cli.Name("echo")
 	cli.Description("Serve an echo server which responds the request data (endpoint, headers and body) as JSON.")
-	address := cli.Pos("address", "Address to listen on").WithDefault(":8080")
+	address := cli.Pos("address", "Address to listen on").WithDefault("127.0.0.1:8080")
 	verbose := cli.FlagBool("", "v", "-v logs endpoints, -vv logs endpoints, headers and body.").AsRepeatable()
 	cli.Parse()
 
@@ -112,7 +116,7 @@ func cmdProxy() {
 	cli.Name("proxy")
 	cli.Description("Serve a reverse proxy which forwards requests to a target address.")
 	target := cli.Pos("target_address", "Target address to proxy to").AsRequired()
-	self := cli.Pos("self_address", "Address to listen on")
+	self := cli.Pos("self_address", "Address to listen on").WithDefault("127.0.0.1:8080")
 	verbose := cli.FlagBool("", "v", "-v logs endpoints, -vv logs endpoints, headers and body.").AsRepeatable()
 	cli.Parse()
 

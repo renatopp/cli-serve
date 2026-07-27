@@ -15,7 +15,7 @@ type EchoServerOptions struct {
 
 func (e EchoServerOptions) orDefault() EchoServerOptions {
 	if e.Address == "" {
-		e.Address = ":8080"
+		e.Address = "127.0.0.1:8080"
 	}
 	if e.Logger == nil {
 		e.Logger = NewDefaultLogger()

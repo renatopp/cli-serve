@@ -1,8 +1,8 @@
 module github.com/renatopp/go-serve
 
-go 1.26.3
+go 1.26.4
 
 require (
-	github.com/renatopp/go-cli v0.4.0
-	github.com/renatopp/x v0.0.6
+	github.com/renatopp/go-cli v0.6.2
+	github.com/renatopp/go-x v0.3.0
 )

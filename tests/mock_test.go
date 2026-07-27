@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/renatopp/go-serve/serve"
-	"github.com/renatopp/x/httpx"
-	"github.com/renatopp/x/testx"
+	"github.com/renatopp/go-x/httpx/fetch"
+	"github.com/renatopp/go-x/testx"
 )
 
 func TestMockModeCLI(t *testing.T) {
@@ -21,7 +21,7 @@ func TestMockModeCLI(t *testing.T) {
 		baseURL, closeServer := serveOnRandomPort(t, server)
 		defer closeServer()
 
-		res := httpx.Fetch("GET", baseURL+"/")
+		res := fetch.Get(baseURL + "/")
 		testx.Equal(t, 201, res.StatusCode)
 
 	})
