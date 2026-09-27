@@ -1,24 +1,24 @@
-# go-serve
+# cli-serve
 
 Web servers for testing and convenience.
 
-`go-serve` is a CLI tool and library that provides convenient web servers functionality, such as serving static files, proxying requests, and more.
+`cli-serve` is a CLI tool and library that provides convenient web servers functionality, such as serving static files, proxying requests, and more.
 
 ## Installation
 
 To install `serve` CLI tool, just run:
 
 ```bash
-go install github.com/renatopp/go-serve/cmd/serve@latest
+go install github.com/renatopp/cli-serve/cmd/serve@latest
 ```
 
 To install as a library, use:
 
 ```bash
-go get github.com/renatopp/go-serve/serve
+go get github.com/renatopp/cli-serve/serve
 ```
 
-Then, import the package `github.com/renatopp/go-serve` in your Go code.
+Then, import the package `github.com/renatopp/cli-serve` in your Go code.
 
 ## CLI Usage
 
@@ -103,10 +103,10 @@ Currently, there are the following server types available:
 
 ## Library Usage
 
-To use `go-serve` as a library, import `github.com/renatopp/go-serve/serve` in your Go code.
+To use `cli-serve` as a library, import `github.com/renatopp/cli-serve/serve` in your Go code.
 
 ```go
-import "github.com/renatopp/go-serve/serve"
+import "github.com/renatopp/cli-serve/serve"
 
 func main() {
   server := serve.NewStaticServer(serve.StaticServerOptions{

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/renatopp/cli-serve/serve"
 	"github.com/renatopp/go-cli"
-	"github.com/renatopp/go-serve/serve"
 	"github.com/renatopp/go-x/fmtx"
 )
 

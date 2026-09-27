@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/renatopp/go-serve/serve"
+	"github.com/renatopp/cli-serve/serve"
 	"github.com/renatopp/go-x/testx"
 )
 

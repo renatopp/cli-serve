@@ -1,4 +1,4 @@
-module github.com/renatopp/go-serve
+module github.com/renatopp/cli-serve
 
 go 1.26.4
 
